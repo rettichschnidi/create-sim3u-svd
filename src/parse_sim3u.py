@@ -306,15 +306,11 @@ class Persistency:
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-        description='Generate svd file')
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                     description='Generate svd file')
 
-    parser.add_argument("--input", default=None,
-                        help="Filename of the reference manual to parse")
-
-    parser.add_argument("--out", default=None,
-                        help="Filename of the svd file to generate")
+    parser.add_argument("--input", required=True, help="Filename of the reference manual to parse")
+    parser.add_argument("--out", required=True, help="Filename of the svd file to generate")
 
     return parser.parse_args()
 
@@ -327,8 +323,7 @@ def main():
     # setup the logger
     handler = logging.StreamHandler(sys.stdout)
     logger.setLevel(logging.INFO)
-    formatter = logging.Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
