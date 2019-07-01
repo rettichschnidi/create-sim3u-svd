@@ -224,7 +224,7 @@ class RegisterBitTableEntry:
         for list_index, bit_index in enumerate(self.bits):
             reset_mask = reset_mask | (1 << bit_index)
             reset_value = reset_value | (self.reset[list_index] << bit_index)
-        return (reset_value, reset_mask)
+        return reset_value, reset_mask
 
     def _parse_function(self):
         p1 = re.compile('([0,1]+)(-([0,1]+))?:\s*(.*)')
